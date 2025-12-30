@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto, Vazirmatn } from "next/font/google";
 import "./globals.css";
+import ThemeProvider from "./features/theme/provider/theme-provider";
+import { Card } from "@/components/ui/card";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const vazirmatn = Vazirmatn({
+  variable: "--font-vazirmatn",
+  subsets: ["arabic"],
 });
 
 export const metadata: Metadata = {
@@ -23,8 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={`${vazirmatn.variable} ${roboto.variable} flex flex-1 items-center justify-center p-4`}>
+        <Card className="w-full max-w-md p-10">
+          <ThemeProvider>{children}</ThemeProvider>
+        </Card>
       </body>
     </html>
   );
