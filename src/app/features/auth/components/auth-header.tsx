@@ -1,15 +1,12 @@
-import React from "react";
+import { getI18n } from "@/locales/server";
 
-type Props = {
-  title: string;
-  description: string;
-};
+export default async function AuthHeader() {
+  const t = await getI18n();
 
-export default function AuthHeader({ title, description }: Props) {
   return (
-    <div className="text-center mb-8">
-      <h1 className="mb-2 text-2xl font-bold">{title}</h1>
-      <p className="text-secondary-foreground text-sm">{description}</p>
+    <div className="mb-8 text-center">
+      <h1 className="mb-2 text-2xl font-bold"> {t("HomePage.title")}</h1>
+      <p className="text-secondary-foreground text-sm">{t("HomePage.description")}</p>
     </div>
   );
 }

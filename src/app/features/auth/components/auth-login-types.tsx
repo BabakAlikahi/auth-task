@@ -3,13 +3,16 @@
 import { useState } from "react";
 import { Apple, Diamond, Facebook, Github, Linkedin, Mail, PcCase, X } from "lucide-react";
 
+import { useI18n } from "@/locales/client";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { ApplicationNameType } from "../types/auth-types";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Separator } from "@/components/ui/separator";
 
 export default function AuthLoginTypes() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const t = useI18n();
 
   return (
     <div className="space-y-3">
@@ -18,7 +21,7 @@ export default function AuthLoginTypes() {
         className="w-full rounded-4xl text-base font-medium"
       >
         <Mail />
-        ورود با ایمیل
+        {t("HomePage.title")}
       </Button>
 
       <div className="grid grid-cols-3 gap-3">

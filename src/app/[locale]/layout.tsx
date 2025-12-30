@@ -1,16 +1,14 @@
+import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
 import { Roboto, Vazirmatn } from "next/font/google";
 
 import { Card } from "@/components/ui/card";
-import { Locale, localeConfigs } from "@/i18n/local";
+import { I18nProviderClient } from "@/locales/client";
 
+import HeaderTop from "../features/header/components/header-top";
 import ThemeProvider from "../features/theme/provider/theme-provider";
 
 import "../globals.css";
-import HeaderTop from "../features/header/components/header-top";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -32,30 +30,22 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export default async function RootLayout({ children, params }: Props) {
-  const { locale: incomingLocale } = await params;
-
-  if (!routing.locales.includes(incomingLocale as Locale)) {
-    notFound();
-  }
-
-  const locale = incomingLocale as Locale;
-
-  setRequestLocale(locale);
-
-  const direction = localeConfigs[locale].dir;
+export default async function RootLayout({ children, params }: { children: ReactNode; params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
 
   return (
     <html
       lang={locale}
-      dir={direction}
+      dir={locale === "fa" ? "rtl" : "ltr"}
     >
       <body className={`${vazirmatn.variable} ${roboto.variable} flex flex-1 items-center justify-center p-4`}>
         <Card className="w-full max-w-md gap-0 p-10">
-          <ThemeProvider>
-            <HeaderTop />
-            {children}
-          </ThemeProvider>
+          <I18nProviderClient locale={locale}>
+            <ThemeProvider>
+              <HeaderTop />
+              {children}
+            </ThemeProvider>
+          </I18nProviderClient>
         </Card>
       </body>
     </html>

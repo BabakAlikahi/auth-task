@@ -4,7 +4,8 @@ import { MoonStar, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useThemeStore } from "../../theme/store/theme-store";
-import { Switch } from "@/components/ui/switch";
+
+import LanguageSwitcher from "../../ui/components/language-switcher";
 
 export default function HeaderTop() {
   const { theme, toggle } = useThemeStore();
@@ -23,11 +24,7 @@ export default function HeaderTop() {
           {theme == "dark" ? <Sun /> : <MoonStar />}
         </Button>
 
-        <div className="flex items-center gap-2">
-          <span className="text-secondary-foreground text-xs">Fa</span>
-          <Switch dir="ltr" />
-          <span className="text-secondary-foreground text-xs">En</span>
-        </div>
+        <LanguageSwitcher />
       </div>
     </div>
   );
