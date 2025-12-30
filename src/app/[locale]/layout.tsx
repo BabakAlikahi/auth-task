@@ -10,6 +10,7 @@ import { Locale, localeConfigs } from "@/i18n/local";
 import ThemeProvider from "../features/theme/provider/theme-provider";
 
 import "../globals.css";
+import HeaderTop from "../features/header/components/header-top";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -51,7 +52,10 @@ export default async function RootLayout({ children, params }: Props) {
     >
       <body className={`${vazirmatn.variable} ${roboto.variable} flex flex-1 items-center justify-center p-4`}>
         <Card className="w-full max-w-md p-10">
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <HeaderTop />
+            {children}
+          </ThemeProvider>
         </Card>
       </body>
     </html>

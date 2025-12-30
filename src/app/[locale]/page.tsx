@@ -1,15 +1,17 @@
-import { useTranslations } from "next-intl";
+import AuthHeader from "../features/auth/components/auth-header";
+import AuthLoginForm from "../features/auth/components/auth-login-form";
+import AuthLoginTypes from "../features/auth/components/auth-login-types";
 
 export default function HomePage() {
-  const t = useTranslations("HomePage");
-
   return (
     <div className="space-y-6">
-      <h1 className="text-primary text-2xl font-bold">{t("title")}</h1>
+      <AuthHeader
+        title="خوش آمدید"
+        description="برای ادامه وارد حساب خود شوید"
+      />
+      <AuthLoginTypes />
 
-      <p className="text-muted-foreground">{t("description")}</p>
-
-      <hr className="my-4" />
+      <AuthLoginForm />
     </div>
   );
 }
