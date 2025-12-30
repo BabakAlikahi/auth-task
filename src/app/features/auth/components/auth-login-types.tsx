@@ -21,7 +21,7 @@ export default function AuthLoginTypes() {
         className="w-full rounded-4xl text-base font-medium"
       >
         <Mail />
-        {t("HomePage.title")}
+        {t("Auth.google_login")}
       </Button>
 
       <div className="grid grid-cols-3 gap-3">
@@ -54,7 +54,7 @@ export default function AuthLoginTypes() {
               variant={"link"}
               className="text-muted-foreground hover:text-primary hover:decoration-doted text-xs underline decoration-dotted"
             >
-              سایر گزینه ها
+              {t("Auth.more_options")}
             </Button>
           </CollapsibleTrigger>
 
@@ -75,7 +75,7 @@ export default function AuthLoginTypes() {
 
       <div className="relative my-6 flex items-center justify-center overflow-hidden">
         <Separator />
-        <p className="text-muted-foreground shrink-0 px-2 text-center text-xs">یا ورود با</p>
+        <p className="text-muted-foreground shrink-0 px-2 text-center text-xs">{t("Auth.or_continue")}</p>
         <Separator />
       </div>
     </div>

@@ -1,17 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { useI18n } from "@/locales/client";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { FieldGroup } from "@/components/ui/field";
+import { emailSchema, mobileSchema } from "../schema/auth-schema";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 import ControllInput from "../../components/controll-input";
-import { emailSchema, mobileSchema } from "../schema/auth-schema";
-import Link from "next/link";
 
 type TabType = "email" | "mobile";
 
@@ -35,6 +35,8 @@ export default function AuthLoginForm() {
     console.log(tab, data);
   };
 
+  const t = useI18n();
+
   return (
     <div>
       <Tabs
@@ -46,13 +48,13 @@ export default function AuthLoginForm() {
             className="font-sm rounded-4xl px-6 py-1.5"
             value="mobile"
           >
-            موبایل
+            {t("Auth.phone")}
           </TabsTrigger>
           <TabsTrigger
             className="font-sm rounded-4xl px-6 py-1.5"
             value="email"
           >
-            ایمیل
+            {t("Auth.email")}
           </TabsTrigger>
         </TabsList>
 
@@ -62,9 +64,9 @@ export default function AuthLoginForm() {
               <ControllInput
                 control={control}
                 name="value"
-                label="آدرس ایمیل"
+                label={t("Auth.email_label")}
                 type="email"
-                placeHolder="name@example.com"
+                placeHolder={t("Auth.email_placeholder")}
               />
             </TabsContent>
 
@@ -72,7 +74,7 @@ export default function AuthLoginForm() {
               <ControllInput
                 control={control}
                 name="value"
-                label="شماره موبایل"
+                label={t("Auth.phone_label")}
                 type="tel"
                 placeHolder="9123456789"
                 className="text-end"
@@ -84,7 +86,7 @@ export default function AuthLoginForm() {
               size={"lg"}
             >
               <ArrowLeft className="me-0.5" />
-              ادامه
+              {t("Auth.continue")}
             </Button>
           </FieldGroup>
         </form>
@@ -95,7 +97,7 @@ export default function AuthLoginForm() {
         variant={"link"}
         className="text-muted-foreground hover:text-primary mx-auto flex w-fit justify-center text-xs"
       >
-        ادامه به صورت مهمان
+        {t("Auth.guest_login")}
       </Button>
     </div>
   );

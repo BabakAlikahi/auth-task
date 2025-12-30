@@ -1,6 +1,28 @@
 {
-  "HomePage": {
-    "title": "خوزطرطزش آمدید",
-    "description": "این یک پروژه چندزبانه با Next.js است."
+  "Auth": {
+    "welcome": "خوش آمدید",
+    "subtitle": "برای ادامه وارد حساب خود شوید",
+    "google_login": "ورود با گوگل",
+    "more_options": "سایر گزینه‌ها",
+    "or_continue": "یا ورود با",
+    "email": "ایمیل",
+    "phone": "تلفن",
+    "email_label": "آدرس ایمیل",
+    "email_placeholder": "name@example.com",
+    "phone_label": "شماره موبایل",
+    "otp_label": "کد تایید",
+    "otp_placeholder": "صندوق ورودی یا پیامک خود را چک کنید",
+    "error_invalid_otp": "کد نامعتبر است. مجدد تلاش کنید.",
+    "continue": "ادامه",
+    "sign_in": "ورود",
+    "guest_login": "ادامه به صورت مهمان",
+    "terms_text": "با ادامه دادن، شما قوانین ما را می‌پذیرید:",
+    "terms_link": "شرایط استفاده",
+    "and": "و",
+    "privacy_link": "حریم خصوصی"
+  },
+  "Common": {
+    "en": "English",
+    "fa": "فارسی"
   }
 }

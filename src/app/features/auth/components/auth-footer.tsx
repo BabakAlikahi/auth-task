@@ -1,22 +1,26 @@
 import Link from "next/link";
 
-export default function AuthFooter() {
+import { getI18n } from "@/locales/server";
+
+export default async function AuthFooter() {
+  const t = await getI18n();
+
   return (
     <div className="mt-4 text-center">
       <p className="text-muted-foreground text-[10px]">
-        با ادامه دادن، شما قوانین ما را می‌پذیرید:{" "}
+        {t("Auth.terms_text")}{" "}
         <Link
           className="underline decoration-dotted"
           href={"#"}
         >
-          شرایط استفاده
+          {t("Auth.terms_link")}
         </Link>{" "}
         و{" "}
         <Link
           className="underline decoration-dotted"
           href={"#"}
         >
-          حریم خصوصی
+          {t("Auth.privacy_link")}
         </Link>
         .
       </p>

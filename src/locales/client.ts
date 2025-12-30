@@ -11,5 +11,4 @@ export const {
 } = createI18nClient({
   en: () => import("../messages/en.json"),
   fa: () => import("../messages/fa.json"),
-  de: () => import("../messages/de.json"),
 });

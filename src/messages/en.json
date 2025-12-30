@@ -1,6 +1,29 @@
 {
-  "HomePage": {
-    "title": "Welcome",
-    "description": "This is a multi-language project with Next.js."
+  "Auth": {
+    "welcome": "Welcome back",
+    "subtitle": "Sign in to Your Account to continue",
+    "google_login": "Continue with Google",
+    "more_options": "More options",
+    "or_continue": "Or continue with",
+    "email": "Email",
+    "phone": "Phone",
+    "email_label": "Email Address",
+    "email_placeholder": "name@example.com",
+    "phone_label": "Phone Number",
+    "otp_label": "Enter Code",
+    "otp_placeholder": "Check your inbox/SMS",
+
+    "error_invalid_otp": "Invalid code. Please try again.",
+    "continue": "Continue",
+    "sign_in": "Sign In",
+    "guest_login": "Continue as Guest",
+    "terms_text": "By clicking continue, you agree to our",
+    "terms_link": "Terms of Service",
+    "and": "and",
+    "privacy_link": "Privacy Policy"
+  },
+  "Common": {
+    "en": "English",
+    "fa": "فارسی"
   }
 }
