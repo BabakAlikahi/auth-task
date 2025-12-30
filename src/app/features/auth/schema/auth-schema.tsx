@@ -1,11 +1,12 @@
 import { z } from "zod";
 
-const passwordField = z.string("فیلد اجباری میباشد").min(3, "تعداد کارکتر کمتر از حد مجاز میباشد.").max(20, "تعداد کارکتر بیش از حد مجاز میباشد.");
-const emailField = z.email("فرمت ایمیل اشتباه میباشد").max(50, "تعداد کارکتر بیش از حد مجاز میباشد.");
-
-export const loginSchema = z.object({
-  email: emailField,
-  password: passwordField,
+export const emailSchema = z.object({
+  value: z.string().email("فرمت ایمیل اشتباه می‌باشد").max(50, "تعداد کاراکتر بیش از حد مجاز است"),
 });
 
-export type LoginFormValues = z.infer<typeof loginSchema>;
+export const mobileSchema = z.object({
+  value: z.string().regex(/^\d{10}$/, "شماره موبایل باید ۱۰ رقم باشد"),
+});
+
+export type EmailFormValues = z.infer<typeof emailSchema>;
+export type MobileFormValues = z.infer<typeof mobileSchema>;

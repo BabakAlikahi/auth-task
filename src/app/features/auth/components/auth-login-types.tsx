@@ -49,13 +49,13 @@ export default function AuthLoginTypes() {
           >
             <Button
               variant={"link"}
-              className="text-muted-foreground hover:text-primary hove:decoration-doted text-xs underline decoration-dotted"
+              className="text-muted-foreground hover:text-primary hover:decoration-doted text-xs underline decoration-dotted"
             >
               سایر گزینه ها
             </Button>
           </CollapsibleTrigger>
 
-          <CollapsibleContent className="mt-2 grid grid-cols-5 gap-3">
+          <CollapsibleContent className="mt-3 grid grid-cols-5 gap-3">
             {ApplicationName.slice(3).map((application) => (
               <Button
                 key={application.name}
@@ -70,7 +70,7 @@ export default function AuthLoginTypes() {
         </Collapsible>
       </div>
 
-      <div className="relative my-4 flex items-center justify-center overflow-hidden">
+      <div className="relative my-6 flex items-center justify-center overflow-hidden">
         <Separator />
         <p className="text-muted-foreground shrink-0 px-2 text-center text-xs">یا ورود با</p>
         <Separator />

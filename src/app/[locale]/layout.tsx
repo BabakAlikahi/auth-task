@@ -51,7 +51,7 @@ export default async function RootLayout({ children, params }: Props) {
       dir={direction}
     >
       <body className={`${vazirmatn.variable} ${roboto.variable} flex flex-1 items-center justify-center p-4`}>
-        <Card className="w-full max-w-md p-10">
+        <Card className="w-full max-w-md gap-0 p-10">
           <ThemeProvider>
             <HeaderTop />
             {children}
