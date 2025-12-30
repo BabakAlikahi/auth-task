@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { Roboto, Vazirmatn } from "next/font/google";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
 
 import { Card } from "@/components/ui/card";
+import { Locale, localeConfigs } from "@/i18n/local";
 
 import ThemeProvider from "../features/theme/provider/theme-provider";
 
@@ -30,17 +32,26 @@ type Props = {
 };
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
-    console.log("ss");
+  const { locale: incomingLocale } = await params;
+
+  if (!routing.locales.includes(incomingLocale as Locale)) {
+    notFound();
   }
+
+  const locale = incomingLocale as Locale;
+
+  setRequestLocale(locale);
+
+  const direction = localeConfigs[locale].dir;
+
   return (
-    <html lang="en">
+    <html
+      lang={locale}
+      dir={direction}
+    >
       <body className={`${vazirmatn.variable} ${roboto.variable} flex flex-1 items-center justify-center p-4`}>
         <Card className="w-full max-w-md p-10">
-          <NextIntlClientProvider>
-            <ThemeProvider>{children}</ThemeProvider>
-          </NextIntlClientProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </Card>
       </body>
     </html>
