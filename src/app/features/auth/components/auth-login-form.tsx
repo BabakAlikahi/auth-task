@@ -50,29 +50,28 @@ export default function AuthLoginForm() {
         value={tab}
         onValueChange={(v) => setTab(v as TabType)}
       >
-        {!isOtpStep && (
-          <TabsList className="mx-auto mb-6 grid h-auto grid-cols-2 rounded-4xl p-1.5">
-            <TabsTrigger
-              className="font-sm rounded-4xl px-6 py-1.5"
-              value="mobile"
-            >
-              {t("Auth.phone")}
-            </TabsTrigger>
-            <TabsTrigger
-              className="font-sm rounded-4xl px-6 py-1.5"
-              value="email"
-            >
-              {t("Auth.email")}
-            </TabsTrigger>
-          </TabsList>
-        )}
+        <TabsList className="mx-auto mb-6 grid h-auto grid-cols-2 rounded-4xl p-1.5">
+          <TabsTrigger
+            className="font-sm rounded-4xl px-6 py-1.5"
+            value="mobile"
+          >
+            {t("Auth.phone")}
+          </TabsTrigger>
+          <TabsTrigger
+            className="font-sm rounded-4xl px-6 py-1.5"
+            value="email"
+          >
+            {t("Auth.email")}
+          </TabsTrigger>
+        </TabsList>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FieldGroup className="space-y-4">
+          <FieldGroup>
             <div className={isOtpStep ? "pointer-events-none opacity-60" : ""}>
               <TabsContent
                 value="email"
                 className="mt-0 text-start rtl:text-center"
+                dir="auto"
               >
                 <ControllInput
                   control={control}
@@ -86,14 +85,16 @@ export default function AuthLoginForm() {
               <TabsContent
                 value="mobile"
                 className="mt-0"
+                dir="auto"
               >
                 <ControllInput
                   control={control}
                   name="value"
                   label={t("Auth.phone_label")}
-                  type="tel"
+                  type="text"
+                  maxLength={10}
                   placeHolder="9123456789"
-                  className="text-end"
+                  className="rtl:text-start"
                 />
               </TabsContent>
             </div>
@@ -129,7 +130,7 @@ export default function AuthLoginForm() {
         <Button
           type="button"
           variant={"link"}
-          className="text-muted-foreground hover:text-primary mx-auto flex w-fit justify-center text-xs"
+          className="text-muted-foreground hover:text-primary mx-auto flex h-fit w-fit justify-center text-xs"
         >
           {t("Auth.guest_login")}
         </Button>
